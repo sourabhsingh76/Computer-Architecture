@@ -1,0 +1,30 @@
+mov r12,1 
+mov r9,0
+.index:
+	mov r11,0
+	mov r7,1
+	.index 2:
+		add r8,r7,1
+		.index 3:
+			mul r1,r7,r7
+			mul r1,r1,r7
+			mul r2,r8,r8
+			mul r2,r2,r8
+			add r3,r1,r2
+			cmp r3,r12
+			beq.world
+			.galaxy 1
+			cmp r12,r8
+			bgt.index 3
+		cmp r12,r7
+		bgt.index 2
+	  cmp r11,2
+	  beq.gem
+	  .galaxy 2
+	  cmp 1,r9
+	  bgt.index
+   .world:
+   add r11,r11,1
+   b.galaxy 1
+   .gem:add r9,r9,1
+   b.galaxy 2
